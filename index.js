@@ -4,7 +4,7 @@ const port = process.env.PORT || 8000;
 
 const session = require('express-session');
 
-const node_session_secret = 'e8bffe67-2632-4dfd-86d5-fa760ea33908';
+
 
 app.use(express.json());
 
