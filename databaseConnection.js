@@ -5,20 +5,19 @@ const mongodb_user = process.env.MONGODB_USER;
 const mongodb_password = process.env.MONGODB_PASSWORD;
 
 const { MongoClient } = require("mongodb");
-const atlasURI = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/?retryWrites=true&w=majority`;
-var database = new MongoClient(atlasURI, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-});
+const atlasURI = `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/?retryWrites=true`;
+var database = new MongoClient(atlasURI, {useNewUrlParser: true, useUnifiedTopology: true});
 
-async function connectToMongo() {
+async function connectToDatabase() {
     try {
         await database.connect();
-        console.log("connected to mongodb");
+        console.log("Connected to MongoDB");
     } catch (error) {
-        console.error("error connecting to mongodb:", error);
+        console.error("Error connecting to MongoDB:", error);
     }
 }
-connectToMongo();
+
+connectToDatabase();
+
 module.exports = {database};
 
